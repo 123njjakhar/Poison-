@@ -1,5 +1,9 @@
 from typing import Union
+
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+
+from Romeo import app
+from config import SUPPORT_GROUP
 
 
 def help_pannel(_, START: Union[bool, int] = None):
@@ -10,16 +14,11 @@ def help_pannel(_, START: Union[bool, int] = None):
     ]
     second = [
         InlineKeyboardButton(
-            # text=_["BACK_BUTTON"],
-            text="ʜᴏᴍᴇ",
+            text=_["BACK_BUTTON"],
             callback_data=f"settingsback_helper",
         ),
         InlineKeyboardButton(
-            text="ᴍᴏʀᴇ",
-            url=f"t.meITS_MEE_DEVIL_NJ",
-        ),
-        InlineKeyboardButton(
-            text="ᴄʟᴏsᴇ", callback_data=f"close"
+            text=_["CLOSEMENU_BUTTON"], callback_data=f"close"
         ),
     ]
     mark = second if START else first
@@ -92,13 +91,15 @@ def help_back_markup(_):
         [
             [
                 InlineKeyboardButton(
-                    # text=_["BACK_BUTTON"],
-                    text="≽ ʙᴀᴄᴋ ≼",
+                    text=_["BACK_BUTTON"],
                     callback_data=f"settings_back_helper",
                 ),
                 InlineKeyboardButton(
                     text=_["CLOSE_BUTTON"], callback_data=f"close"
-                )
+                ),
+                InlineKeyboardButton(
+                    text="• sᴜᴩᴩᴏʀᴛ •", url=f"{SUPPORT_GROUP}"
+                ),
             ]
         ]
     )
@@ -109,8 +110,8 @@ def private_help_panel(_):
     buttons = [
         [
             InlineKeyboardButton(
-                text="≽ ʙᴀᴄᴋ ≼",
-                callback_data="settings_back_helper",
+                text=_["S_B_1"],
+                url=f"https://t.me/{app.username}?start=help",
             ),
         ],
     ]
